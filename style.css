@@ -1,0 +1,380 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary-color: #243946;
+}
+
+body {
+    background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.wrap {
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 275px;
+    height: 500px;
+    background-image: linear-gradient(180deg, #F4D03F 0%, #16A085 100%);
+    overflow: hidden;
+    border-radius: 35px;
+    box-shadow: 0 0 15px 0 rgba(0,0,0,0.5);
+}
+
+.ear {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: -110px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+
+.ear.ear-left {
+    right: -125px;
+}
+
+.ear.ear-right {
+    left: -125px;
+}
+
+.face {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    height: 150px;
+    margin: 80px auto 10px;
+    --rotate-head: 0deg;
+    transform: rotate(var(--rotate-head));
+    transition: transform 0.2s;
+    transform-origin: center 20px;
+}
+
+.eye {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+
+.eye.eye-left {
+    margin-right: 40px;
+}
+
+.eye.eye-right {
+    margin-left: 40px;
+}
+
+.eye .glow {
+    position: relative;
+    top: 3px;
+    right: -12px;
+    width: 12px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #fff;
+    transform: rotate(38deg)
+}
+
+.nose {
+    position: relative;
+    top: 30px;
+    transform: scale(1.1);
+}
+
+.nose .glow {
+    position: absolute;
+    width: 15px;
+    height: 8px;
+    top: 3px;
+    left: 32%;
+    border-radius: 50%;
+    background-color: #476375;
+}
+
+.mouth {
+    position: relative;
+    margin-top: 45px;
+}
+
+svg.smile {
+    position: absolute;
+    left: -28px;
+    top: -19px;
+    transform: scaleX(1.1);
+    stroke: var(--primary-color);
+}
+
+.mouth-hole {
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 60px;
+    height: 15px;
+    border-radius: 50%/100% 100% 0% 0;
+    transform: rotate(180deg);
+    background-color: var(--primary-color);
+    z-index: -1;
+}
+
+.tongue {
+    position: relative;
+    top: 5px;
+    width: 30px;
+    height: 20px;
+    background-color: #ffd7dd;
+    transform-origin: top;
+    transform: rotateX(60deg);
+}
+
+.tongue.breath {
+    animation: breath 0.2s infinite linear;
+}
+
+@keyframes breath {
+    0%, 100% {
+        transform: rotateX(0deg);
+    }
+    50% {
+        transform: rotateX(60deg);
+    }
+}
+
+.tongue-top {
+    position: absolute;
+    bottom: -15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: #ffd7dd;
+}
+
+.line {
+    position: absolute;
+    top: 0;
+    width: 30px;
+    height: 5px;
+    background-color: #fcb7bf;
+}
+
+.median {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    width: 4px;
+    height: 25px;
+    background-color: #fcb7bf;
+    border-radius: 5px;
+}
+
+.hands {
+    position: relative;
+}
+
+.hands .hand {
+    position: absolute;
+    display: flex;
+    top: -6px;
+    transition: transform 0.5s ease-in-out;
+    z-index: 1;
+}
+
+.hands .hand-left {
+    left: 50px;
+}
+
+.hands .hand-right {
+    left: 170px;
+}
+
+.hands .hand-left.hide {
+    transform: translate(2px, -155px) rotate(-160deg);
+}
+
+.hands .hand-left.peek {
+    transform: translate(0px, -120px) rotate(-160deg);
+}
+
+.hands .hand-right.hide {
+    transform: translate(-6px, -155px) rotate(160deg);
+}
+
+.hands .hand-right.peek {
+    transform: translate(-4px, -120px) rotate(160deg);
+}
+
+.hands .finger {
+    position: relative;
+    z-index: 0;
+}
+
+.finger .bone {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary-color);
+    border-bottom: none;
+    border-top: none;
+    background-color: #ccc;
+}
+
+.finger .nail {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 20px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    background-color: #ccc;
+    z-index: -1;
+}
+
+.finger:nth-child(1),
+.finger:nth-child(3) {
+    left: 4px;
+    z-index: 1;
+}
+
+.finger:nth-child(1) .bone,
+.finger:nth-child(3) .bone {
+    height: 10px;
+}
+
+.finger:nth-child(3) {
+    left: -4px;
+}
+
+.finger:nth-child(2) {
+    top: -5px;
+    z-index: 2;
+}
+
+.finger:nth-child(1) .nail,
+.finger:nth-child(3) .nail {
+    top: 0px;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.login label {
+    position: relative;
+    padding: 0 20px;
+}
+
+.login label i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 35px;
+    color: #bbb;
+}
+
+.login label i::before {
+    position: relative;
+    left: 1px;
+}
+
+.login input ,
+.login .login-button {
+    width: 100%;
+    height: 35px;
+    border: none;
+    border-radius: 35px;
+}
+
+.login input {
+    padding: 0 20px 0 40px;
+    margin: 5px 0;
+    outline: none;
+    font-weight: 500;
+}
+
+.login input:placeholder {
+    color: #ccc;
+}
+
+.login input.password {
+    padding: 0 90px 0 40px;
+}
+
+.login .password-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 25px;
+    width: 80px;
+    height: 27px;
+    border-radius: 35px;
+    border: none;
+    outline: none;
+    background-color: var(--primary-color);
+    color: #fff;
+    cursor: pointer;
+}
+
+.login .password-button:active {
+    transform: scale(0.95) translateY(-50%);
+}
+
+.login .login-button {
+    width: calc(100% - 40px);
+    margin: 20px 20px 0;
+    border: none;
+    outline: none;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.login .login-button:active {
+    transform: scale(0.95);
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: 0 10px;
+    background-color: var(--primary-color);
+    color: #fff;
+    cursor: pointer;
+}
+
+.social:active {
+    transform: scale(0.95);
+}
+
+.login-text {
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.6;
+    margin: 25px 0 10px 0;
+}
